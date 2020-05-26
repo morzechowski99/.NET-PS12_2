@@ -1,0 +1,42 @@
+﻿@page
+@model PS12_2.Pages.Products.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Product.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Product.Name)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Product.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Product.Price)
+        </dd>
+        <dt class="col-sm-2">
+            Kategorie
+        </dt>
+        <dd class="col-sm-10">
+            @foreach(var item in Model.Product.ProductCategories)
+            {
+                <p class="m-0">@item.Category.Name</p>
+            }
+        </dd>
+        
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Product.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
